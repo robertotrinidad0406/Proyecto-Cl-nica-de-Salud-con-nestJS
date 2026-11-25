@@ -1,5 +1,7 @@
 import { Controller, Get, Param, Body, Post, Put, Delete, NotFoundException } from '@nestjs/common'
 import { MedicosService } from './medicos.service.js'
+import { CreateMedicosDto } from './dto/create-medicos.ts.js'
+import { UpdateMedicosDto } from './dto/update-medico.dto.js'
 
 @Controller('medicos')
 export class MedicosController {
@@ -15,17 +17,13 @@ export class MedicosController {
     }
 
     @Post()
-    create(@Body() body: any) {
-        return this.medicosService.create(body)
+    create(@Body() dto: CreateMedicosDto) {
+        return this.medicosService.create(dto)
     }
 
     @Put(`:id`)
-    async update(@Param(`id`) id: string, @Body() body: any) {
-        const medico = await this.medicosService.findOne(Number(id))
-        if (!medico) {
-            throw new NotFoundException(`Medico actualizado`)
-        }
-        return this.medicosService.update(Number(id), body)
+    async update(@Param(`id`) id: string, @Body() dto: UpdateMedicosDto) {
+        return this.medicosService.update(Number(id), dto)
     }
 
     @Delete(`:id`)
