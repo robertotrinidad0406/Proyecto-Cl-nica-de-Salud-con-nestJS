@@ -7,6 +7,11 @@ import { UpdatePacienteDto } from './dto/update-paciente.dto.js'
 export class PacientesController {
     constructor(private readonly pacientesService: PacientesService) { }
 
+    @Get()
+    findAll() {
+        return this.pacientesService.findAll()
+    }
+
     @Get(`:id`)
     async findOne(@Param(`id`) id: string) {
         const paciente = await this.pacientesService.findOne(Number(id))
