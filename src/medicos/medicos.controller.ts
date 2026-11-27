@@ -1,11 +1,21 @@
-import { Controller, Get, Param, Body, Post, Put, Delete, NotFoundException } from '@nestjs/common'
+import { Controller, Get, Param, Body, Post, Put, Delete, NotFoundException, UseGuards } from '@nestjs/common'
 import { MedicosService } from './medicos.service.js'
 import { CreateMedicosDto } from './dto/create-medicos.ts.js'
 import { UpdateMedicosDto } from './dto/update-medico.dto.js'
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.js'
+import { RolesGuard } from '../auth/guards/roles.guard.js'
+import { Roles } from '../auth/decorators/roles.decorator.js'
 
 @Controller('medicos')
+@UseGuards(JwtAuthGuard, RolesGuard)
+@Roles('recepcionista')
 export class MedicosController {
     constructor(private readonly medicosService: MedicosService) { }
+
+    @Get()
+    findAll() {
+        return this.medicosService.findAll()
+    }
 
     @Get(`:id`)
     async findOne(@Param(`id`) id: string) {
