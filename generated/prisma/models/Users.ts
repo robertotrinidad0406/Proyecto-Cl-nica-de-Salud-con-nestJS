@@ -41,7 +41,7 @@ export type UsersMinAggregateOutputType = {
   email: string | null
   contrasena: string | null
   telefono: string | null
-  rol: $Enums.Rol | null
+  rol: $Enums.Role | null
   createAt: Date | null
   updatedAt: Date | null
 }
@@ -53,7 +53,7 @@ export type UsersMaxAggregateOutputType = {
   email: string | null
   contrasena: string | null
   telefono: string | null
-  rol: $Enums.Rol | null
+  rol: $Enums.Role | null
   createAt: Date | null
   updatedAt: Date | null
 }
@@ -210,7 +210,7 @@ export type UsersGroupByOutputType = {
   email: string | null
   contrasena: string
   telefono: string
-  rol: $Enums.Rol
+  rol: $Enums.Role
   createAt: Date
   updatedAt: Date
   _count: UsersCountAggregateOutputType | null
@@ -245,7 +245,7 @@ export type UsersWhereInput = {
   email?: Prisma.StringNullableFilter<"Users"> | string | null
   contrasena?: Prisma.StringFilter<"Users"> | string
   telefono?: Prisma.StringFilter<"Users"> | string
-  rol?: Prisma.EnumRolFilter<"Users"> | $Enums.Rol
+  rol?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   createAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   medico?: Prisma.XOR<Prisma.MedicoNullableScalarRelationFilter, Prisma.MedicoWhereInput> | null
@@ -274,7 +274,7 @@ export type UsersWhereUniqueInput = Prisma.AtLeast<{
   apellido?: Prisma.StringFilter<"Users"> | string
   contrasena?: Prisma.StringFilter<"Users"> | string
   telefono?: Prisma.StringFilter<"Users"> | string
-  rol?: Prisma.EnumRolFilter<"Users"> | $Enums.Rol
+  rol?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   createAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   medico?: Prisma.XOR<Prisma.MedicoNullableScalarRelationFilter, Prisma.MedicoWhereInput> | null
@@ -307,7 +307,7 @@ export type UsersScalarWhereWithAggregatesInput = {
   email?: Prisma.StringNullableWithAggregatesFilter<"Users"> | string | null
   contrasena?: Prisma.StringWithAggregatesFilter<"Users"> | string
   telefono?: Prisma.StringWithAggregatesFilter<"Users"> | string
-  rol?: Prisma.EnumRolWithAggregatesFilter<"Users"> | $Enums.Rol
+  rol?: Prisma.EnumRoleWithAggregatesFilter<"Users"> | $Enums.Role
   createAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
 }
@@ -318,7 +318,7 @@ export type UsersCreateInput = {
   email?: string | null
   contrasena: string
   telefono: string
-  rol: $Enums.Rol
+  rol: $Enums.Role
   createAt?: Date | string
   updatedAt?: Date | string
   medico?: Prisma.MedicoCreateNestedOneWithoutUserInput
@@ -331,7 +331,7 @@ export type UsersUncheckedCreateInput = {
   email?: string | null
   contrasena: string
   telefono: string
-  rol: $Enums.Rol
+  rol: $Enums.Role
   createAt?: Date | string
   updatedAt?: Date | string
   medico?: Prisma.MedicoUncheckedCreateNestedOneWithoutUserInput
@@ -343,7 +343,7 @@ export type UsersUpdateInput = {
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  rol?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   medico?: Prisma.MedicoUpdateOneWithoutUserNestedInput
@@ -356,7 +356,7 @@ export type UsersUncheckedUpdateInput = {
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  rol?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   medico?: Prisma.MedicoUncheckedUpdateOneWithoutUserNestedInput
@@ -369,7 +369,7 @@ export type UsersCreateManyInput = {
   email?: string | null
   contrasena: string
   telefono: string
-  rol: $Enums.Rol
+  rol: $Enums.Role
   createAt?: Date | string
   updatedAt?: Date | string
 }
@@ -380,7 +380,7 @@ export type UsersUpdateManyMutationInput = {
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  rol?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -392,7 +392,7 @@ export type UsersUncheckedUpdateManyInput = {
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  rol?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -454,8 +454,8 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type EnumRolFieldUpdateOperationsInput = {
-  set?: $Enums.Rol
+export type EnumRoleFieldUpdateOperationsInput = {
+  set?: $Enums.Role
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -490,7 +490,7 @@ export type UsersCreateWithoutMedicoInput = {
   email?: string | null
   contrasena: string
   telefono: string
-  rol: $Enums.Rol
+  rol: $Enums.Role
   createAt?: Date | string
   updatedAt?: Date | string
 }
@@ -502,7 +502,7 @@ export type UsersUncheckedCreateWithoutMedicoInput = {
   email?: string | null
   contrasena: string
   telefono: string
-  rol: $Enums.Rol
+  rol: $Enums.Role
   createAt?: Date | string
   updatedAt?: Date | string
 }
@@ -529,7 +529,7 @@ export type UsersUpdateWithoutMedicoInput = {
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  rol?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -541,7 +541,7 @@ export type UsersUncheckedUpdateWithoutMedicoInput = {
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   contrasena?: Prisma.StringFieldUpdateOperationsInput | string
   telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  rol?: Prisma.EnumRolFieldUpdateOperationsInput | $Enums.Rol
+  rol?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -616,7 +616,7 @@ export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     email: string | null
     contrasena: string
     telefono: string
-    rol: $Enums.Rol
+    rol: $Enums.Role
     createAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["users"]>
@@ -1049,7 +1049,7 @@ export interface UsersFieldRefs {
   readonly email: Prisma.FieldRef<"Users", 'String'>
   readonly contrasena: Prisma.FieldRef<"Users", 'String'>
   readonly telefono: Prisma.FieldRef<"Users", 'String'>
-  readonly rol: Prisma.FieldRef<"Users", 'Rol'>
+  readonly rol: Prisma.FieldRef<"Users", 'Role'>
   readonly createAt: Prisma.FieldRef<"Users", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Users", 'DateTime'>
 }

@@ -7,10 +7,13 @@ datasource db {
   provider = "postgresql"
 }
 
-enum Rol {
+enum Role {
   recepcionista
   medico
   gerencia
+  admin
+
+  @@map("Rol")
 }
 
 enum EstadoCita {
@@ -27,7 +30,7 @@ model Users {
   email      String?  @unique
   contrasena String   @map("contraseña")
   telefono   String
-  rol        Rol
+  rol        Role
   createAt   DateTime @default(now())
   updatedAt  DateTime @updatedAt
 
